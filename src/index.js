@@ -156,10 +156,14 @@ function handleConfig(request) {
 
 async function handleAuth(request, env) {
   if (!env.TOKEN_SECRET || env.TOKEN_SECRET.length < 16) {
+    console.error('[config] TOKEN_SECRET thiếu hoặc ngắn hơn 16 ký tự');
     return json(request, { ok: false, reason: 'config_unavailable' }, 500);
   }
   const passwords = (config.passwords || []).filter((p) => p && p.hash && p.salt);
-  if (!passwords.length) return json(request, { ok: false, reason: 'config_unavailable' }, 500);
+  if (!passwords.length) {
+    console.error('[config] src/config.json chưa có mật khẩu nào (cần id, salt, hash)');
+    return json(request, { ok: false, reason: 'config_unavailable' }, 500);
+  }
 
   const body = await readJson(request);
   const password = normalizePassword(body && body.password);
@@ -222,6 +226,15 @@ export default {
       if (url.pathname === '/auth' && request.method === 'POST') return await handleAuth(request, env);
       if (url.pathname === '/verify' && request.method === 'POST') return await handleVerify(request, env);
       if (url.pathname === '/' && request.method === 'GET') return json(request, { name: 'younj-config', ok: true });
+      // chẩn đoán nhanh: chỉ trả true/false và số lượng, không lộ giá trị nào
+      if (url.pathname === '/health' && request.method === 'GET') {
+        return json(request, {
+          tokenSecretSet: !!env.TOKEN_SECRET,
+          tokenSecretLongEnough: !!env.TOKEN_SECRET && env.TOKEN_SECRET.length >= 16,
+          passwordsLoaded: (config.passwords || []).filter((p) => p && p.hash && p.salt).length,
+          kvBound: !!env.RATE_LIMIT,
+        });
+      }
       return json(request, { error: 'not_found' }, 404);
     } catch (e) {
       console.error('[error]', e && e.message);
