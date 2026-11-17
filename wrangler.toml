@@ -1,0 +1,9 @@
+name = "younj-config"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# (Khuyến nghị) KV để khóa theo IP bền vững giữa các lần gọi.
+# Tạo namespace "younj-rate-limit" trên Cloudflare, copy ID dán vào đây rồi bỏ comment 3 dòng dưới.
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "DAN_ID_KV_VAO_DAY"
