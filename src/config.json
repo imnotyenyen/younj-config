@@ -5,7 +5,7 @@
     "*"
   ],
   "maintenance": {
-    "enabled": true,
+    "enabled": false,
     "title": "Hệ thống đang nâng cấp",
     "reason": "Chúng mình đang nâng cấp hệ thống để phục vụ bạn tốt hơn.",
     "eta": "Sắp xong, chờ xíu nhé!",
