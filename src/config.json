@@ -1,0 +1,50 @@
+{
+  "name": "YOUNJ Plist Editor",
+  "version": "2",
+  "allowedOrigins": [
+    "*"
+  ],
+  "maintenance": {
+    "enabled": false,
+    "title": "Hệ thống đang nâng cấp",
+    "reason": "Chúng mình đang nâng cấp hệ thống để phục vụ bạn tốt hơn.",
+    "eta": "Sắp xong, chờ xíu nhé!",
+    "contactUrl": "https://zalo.me/0981309921"
+  },
+  "auth": {
+    "mode": "password",
+    "maxAttempts": 3,
+    "lockMinutes": 3,
+    "tokenHours": 12
+  },
+  "passwords": [
+    {
+      "id": "p_4f1e7a",
+      "label": "User 1",
+      "salt": "331aa37184f06349",
+      "hash": "ad0d1074e159248603d1ce4b25c240783b32ca58768c46f9f4b8368e58b0ded8",
+      "enabled": true
+    },
+    {
+      "id": "p_05b9dd",
+      "label": "User 2",
+      "salt": "954cd291058f14d4",
+      "hash": "c883fee91ece504eedac833b0e3e133c41d4efb01568b555e595211d1a3ac69b",
+      "enabled": true
+    },
+    {
+      "id": "p_f0658a",
+      "label": "User 3",
+      "salt": "a6811fa76f83d44c",
+      "hash": "c24873b1a375c786f24fa944db231cbd627bf560a48ccce13ead5c06bb268392",
+      "enabled": true
+    },
+    {
+      "id": "p_038cf1",
+      "label": "User 4",
+      "salt": "876b96630122671c",
+      "hash": "7252d3108e40cbc1816bd98d840b6ff97d730cb6c2968aaf4a10dd294a123c61",
+      "enabled": true
+    }
+  ]
+}
